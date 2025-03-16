@@ -1,9 +1,10 @@
-import "./App.css";
-
+import Todo from "./components/Todo";
 function App() {
   return (
     <>
-      <h1 className="bg-red-100">hello</h1>
+      <div className="m-[20px]">
+        <Todo />
+      </div>
     </>
   );
 }

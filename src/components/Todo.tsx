@@ -2,14 +2,12 @@ import React, { useState } from "react";
 
 export default function Todo() {
   const [todo, setTodo] = useState("");
-  const [submittedNames, setSubmittedNames] = useState<
-    { text: string; done: boolean }[]
-  >([]);
+  const [todos, setTodos] = useState<{ text: string; done: boolean }[]>([]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (todo) {
-      setSubmittedNames((prev) => [...prev, { text: todo, done: false }]); // ახალი todo ობიექტი, რომელიც არ არის გაკეთებული
+      setTodos((prev) => [...prev, { text: todo, done: false }]); // ახალი todo ობიექტი, რომელიც არ არის გაკეთებული
       setTodo(""); // ტექსტი გასუფთავდეს input-ში
     }
   }
@@ -19,16 +17,16 @@ export default function Todo() {
   }
 
   function toggleDone(index: number) {
-    setSubmittedNames((prev) =>
+    setTodos((prev) =>
       prev.map((item, i) =>
         i === index ? { ...item, done: !item.done } : item
       )
     );
-    console.log(submittedNames);
+    console.log(todos);
   }
 
   function deleteTodo(index: number) {
-    setSubmittedNames((prev) => prev.filter((_, i) => i !== index));
+    setTodos((prev) => prev.filter((_, i) => i !== index));
   }
 
   return (
@@ -43,7 +41,7 @@ export default function Todo() {
         <button type="submit">submit</button>
       </form>
 
-      {submittedNames.map((item, index) => (
+      {todos.map((item, index) => (
         <div key={index} className="flex justify-between w-[200px]">
           <h1
             onClick={() => toggleDone(index)}

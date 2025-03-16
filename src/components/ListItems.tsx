@@ -24,12 +24,15 @@ export default function ListItems({ todos, setTodos }: ListItemsProps) {
   }
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center w-[600px] mx-auto p-[10px] bg-red-900 ">
       {todos.map((item: Todo, index: number) => (
-        <div key={index} className="flex justify-between w-[200px]">
+        <div
+          key={index}
+          className="flex justify-between w-full bg-amber-300 p-[10px]"
+        >
           <h1
             onClick={() => toggleDone(index)}
-            className={`w-full ${item.done ? "line-through bg-amber-900" : ""}`}
+            className={` ${item.done ? "line-through bg-pink-100" : ""}`}
           >
             {item.text}
           </h1>

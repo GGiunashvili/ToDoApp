@@ -29,7 +29,9 @@ export default function Form({ setTodos }: FormProps) {
         onChange={handleChange}
         value={todo}
       />
-      <button type="submit">submit</button>
+      <button className="bg-yellow-100" type="submit">
+        submit
+      </button>
     </form>
   );
 }

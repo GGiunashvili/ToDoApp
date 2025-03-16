@@ -6,8 +6,11 @@ export default function Todo() {
 
   return (
     <>
-      <Form setTodos={setTodos} />
-      <ListItems todos={todos} setTodos={setTodos} />
+      <div className="w-full text-center">
+        <h1 className="text-5xl"> todo app</h1>
+        <Form setTodos={setTodos} />
+        <ListItems todos={todos} setTodos={setTodos} />
+      </div>
     </>
   );
 }

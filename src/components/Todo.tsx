@@ -1,20 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Form from "./Form";
 
 export default function Todo() {
-  const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState<{ text: string; done: boolean }[]>([]);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (todo) {
-      setTodos((prev) => [...prev, { text: todo, done: false }]); // ახალი todo ობიექტი, რომელიც არ არის გაკეთებული
-      setTodo(""); // ტექსტი გასუფთავდეს input-ში
-    }
-  }
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTodo(e.target.value);
-  }
 
   function toggleDone(index: number) {
     setTodos((prev) =>
@@ -22,7 +10,6 @@ export default function Todo() {
         i === index ? { ...item, done: !item.done } : item
       )
     );
-    console.log(todos);
   }
 
   function deleteTodo(index: number) {
@@ -31,16 +18,7 @@ export default function Todo() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="border"
-          type="text"
-          onChange={handleChange}
-          value={todo}
-        />
-        <button type="submit">submit</button>
-      </form>
-
+      <Form setTodos={setTodos} />
       {todos.map((item, index) => (
         <div key={index} className="flex justify-between w-[200px]">
           <h1
